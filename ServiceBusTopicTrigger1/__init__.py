@@ -12,10 +12,11 @@ def main(message: func.ServiceBusMessage):
     logging.info("Python ServiceBus topic trigger processed message.")
     logging.info("Message Content Type: " + message_content_type)
     logging.info("Message Body: " + message_body)
-
-    url = f'https://aislingsbustours-bookingapi.azurewebsites.net/update-booking/{json.loads(message_body)["booking_id"]}'
+    booking_id = json.loads(message_body)["booking_id"]
+    url = f'https://aislingsbustours-bookingapi.azurewebsites.net/update-booking/{booking_id}'
     headers = {'Content-Type': 'application/json'}
     data = message_body
+    logging.info("URL: " + url)
     response = requests.put(url, data=data, headers=headers)
-    print(response.text)
+    logging.info("Response: " + response.text)
 
