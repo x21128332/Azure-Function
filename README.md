@@ -1,1 +1,1 @@
-Navigate to Service Bus Topic Trigger
+Navigate to ServiceBusTopicTrigger1
