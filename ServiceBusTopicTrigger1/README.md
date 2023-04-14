@@ -7,4 +7,6 @@ It should be deployed to Azure Functions.
 Once deployed you need to add an application setting under Configuration
 Name: `aislingsbustoursqueue_SERVICEBUS`: Value: `<service bus endpoint key>`
 
-You should use keyvault here to hide your key
+You should use keyvault here to hide your key.
+
+You must add the function app to your keyvault and adding "GET" and "LIST" permissions.
