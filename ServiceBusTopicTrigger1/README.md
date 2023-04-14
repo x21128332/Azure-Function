@@ -2,11 +2,13 @@
 
 This is the Function that is pulling data from the service bus and sending it to the API
 
-It should be deployed to Azure Functions.
+## Functions
+In VSCode, using Azure Tools extension, create a new function app. Pass it the service bus details it asks for.
+Move to configuration settings and add an application setting called "aislingsbustoursqueue_SERVICEBUS" with the vaule
+being pulled from key vault:
+@Microsoft.KeyVault(SecretUri=https://keyvaultabt.vault
+.azure.net/secrets/servicebusconnectionstring/) 
+Update the keyvault name and secret key name to match your key vault and secret key name.
 
-Once deployed you need to add an application setting under Configuration
-Name: `aislingsbustoursqueue_SERVICEBUS`: Value: `<service bus endpoint key>`
-
-You should use keyvault here to hide your key.
-
-You must add the function app to your keyvault and adding "GET" and "LIST" permissions.
+## Key vault - add identity
+In the Azure Key Vault, go to the Access policies and add a  new policy for your funciton. Give both "GET" and "LIST" permissions.
